@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Template</title>
+    <meta name="author" content="cloudasim">
+    <meta name="description" content="Django Blog using tutorial from djangogirls">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div>
+	    <h1><a href="/">Django<span>Blog</span></a></h1>
+	</div>
+
+	{% for post in posts %}
+	    <article>
+	        <small>published: {{ post.published_date }}</small>
+	        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+	        <p>{{ post.text|linebreaksbr }}</p>
+	    </article>
+	{% endfor %}
+</body>
+</html>
