@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Template</title>
-    <meta name="author" content="cloudasim">
-    <meta name="description" content="Django Blog using tutorial from djangogirls">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-	<div>
-	    <h1><a href="/">Django<span>Blog</span></a></h1>
+{% extends 'base.html' %}
+{% block content %}
+	<div class="row home-posts-list">
+    {% for post in posts %}
+    <div class="col-md-6">
+	    <div class="card">
+			<div class="card-block">
+				<h4 class="card-title">{{ post.title }}</h4>
+				<h6 class="card-subtitle mb-2 text-muted">{{ post.published_date }}</h6>
+				<p class="card-text">{{ post.text }}</p>
+				<a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
+			</div>
+	    </div>
+    </div>
+    {% endfor %}
 	</div>
-
-	{% for post in posts %}
-	    <article>
-	        <small>published: {{ post.published_date }}</small>
-	        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-	        <p>{{ post.text|linebreaksbr }}</p>
-	    </article>
-	{% endfor %}
-</body>
-</html>
+{% endblock %}
