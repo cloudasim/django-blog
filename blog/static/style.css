@@ -1,8 +1,17 @@
 .home-posts-list,
-.post-detail{
+.post-detail,
+.post-form{
 	margin: 40px 0;
 }
 
 .home-posts-list .card{
 	margin-bottom: 40px;
+}
+
+/*form styles*/
+label{ display: block; }
+
+input[type="text"],
+textarea{
+	width: 100%;
 }
