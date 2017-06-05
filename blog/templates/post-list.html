@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-	<div class="row home-posts-list">
+    <div class="row home-posts-list">
     {% for post in posts %}
     <div class="col-md-6">
-	    <div class="card">
-			<div class="card-block">
-				<h4 class="card-title">{{ post.title }}</h4>
-				<h6 class="card-subtitle mb-2 text-muted">{{ post.published_date }}</h6>
-				<p class="card-text">{{ post.text }}</p>
-				<a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
-			</div>
-	    </div>
+        <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">{{ post.title }}</h4>
+                <h6 class="card-subtitle mb-2 text-muted">{{ post.published_date }}</h6>
+                <p class="card-text">{{ post.text }}</p>
+                <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+        </div>
     </div>
     {% endfor %}
-	</div>
+    </div>
 {% endblock %}

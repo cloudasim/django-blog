@@ -1,18 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 	<div class="row home-posts-list">
-    {% for post in posts %}
-    <div class="col-md-6">
-	    <div class="card">
-			<div class="card-block">
-				<h4 class="card-title">{{ post.title }}</h4>
-				<h6 class="card-subtitle mb-2 text-muted">Created On: {{ post.created_date|date:'d-m-Y' }}</h6>
-				<p class="card-text">{{ post.text }}</p>
-				<a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
-				<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-			</div>
+	{% if posts %}
+	    {% for post in posts %}
+	    <div class="col-md-6">
+		    <div class="card">
+				<div class="card-block">
+					<h4 class="card-title">{{ post.title }}</h4>
+					<h6 class="card-subtitle mb-2 text-muted">Created On: {{ post.created_date|date:'d-m-Y' }}</h6>
+					<p class="card-text">{{ post.text }}</p>
+					<a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
+					<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+				</div>
+		    </div>
 	    </div>
-    </div>
-    {% endfor %}
+	    {% endfor %}
+	{% else %}
+		<div class="col">
+			<div class="card">
+				<div class="card-block">
+					<p>Sorry! There Are No Draft Articles!!</p>
+					<p><a href="{% url 'post_new' %}" class="btn btn-primary">ADD NOW + </a>  <small>- OR -</small> <a href="{% url 'post_list' %}" class="btn btn-primary">VIEW ARTICLES &rarr;</a></p>
+				</div>
+			</div>
+		</div>
+	{% endif %}
 	</div>
 {% endblock %}

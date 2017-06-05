@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.post_list, name='post_list'),
+    url(r'^login/$', views.user_login, name='user_login'),
+    url(r'^logout/$', views.user_logout, name='user_logout'),
     url(r'^post/(?P<pk>\d+)/$', views.post_detail, name='post_detail'),
     url(r'^drafts/$', views.post_draft, name='post_draft'),
     url(r'^post/(?P<pk>\d+)/publish/$', views.post_publish,
